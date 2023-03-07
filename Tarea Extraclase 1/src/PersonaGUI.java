@@ -16,6 +16,7 @@ public class PersonaGUI extends JFrame{
     private JButton btnDivision;
     private JButton btnResta;
 
+
     public PersonaGUI() {
         setContentPane(panel1);
         setTitle("Personas");
@@ -23,16 +24,24 @@ public class PersonaGUI extends JFrame{
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
-        //txtUsuario.getText()
+        boxProvincia.addItem("San Jose");
+        boxProvincia.addItem("Alajuela");
+        boxProvincia.addItem("Cartago");
+        boxProvincia.addItem("Heredia");
+        boxProvincia.addItem("Guanacaste");
+        boxProvincia.addItem("Puntarenas");
+        boxProvincia.addItem("Limon");
+
 
         btnPersona.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                String Provincia = (String) boxProvincia.getSelectedItem();
                 int Edad = 0;
                 Edad = Integer.parseInt(txtEdad.getText());
 
-                Persona nombre = new Persona(txtNombre.getText(),"si",Edad);
+                Persona nombre = new Persona(txtNombre.getText(),Provincia,Edad);
 
 
                 boxPersona1.addItem(nombre);
@@ -46,18 +55,6 @@ public class PersonaGUI extends JFrame{
                 txtNombre.setText("");
                 txtEdad.setText("");
 
-                boxPersona1.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
-                        Persona a = (Persona)boxPersona1.getSelectedItem();
-                        System.out.println(a.getNombre());
-
-                    }
-                });
-
-                //JComboBox<Object> comboBox = new JComboBox<Object>();
-                //Object obj = new Object(); // Aquí puedes crear el objeto que quieras agregar al combo box
 
             }
         });
@@ -82,6 +79,17 @@ public class PersonaGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                int resta = 0;
+
+                Persona a = (Persona)boxPersona1.getSelectedItem();
+                Persona b = (Persona)boxPersona2.getSelectedItem();
+
+                resta = a.getEdad() - b.getEdad();
+
+                System.out.println(resta);
+
+                lblResultado.setText("Resultado :" + resta);
+
             }
         });
 
@@ -89,12 +97,34 @@ public class PersonaGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                int multi = 0;
+
+                Persona a = (Persona)boxPersona1.getSelectedItem();
+                Persona b = (Persona)boxPersona2.getSelectedItem();
+
+                multi = a.getEdad() * b.getEdad();
+
+                System.out.println(multi);
+
+                lblResultado.setText("Resultado :" + multi);
+
             }
         });
 
         btnDivision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                int division = 0;
+
+                Persona a = (Persona)boxPersona1.getSelectedItem();
+                Persona b = (Persona)boxPersona2.getSelectedItem();
+
+                division = a.getEdad() / b.getEdad();
+
+                System.out.println(division);
+
+                lblResultado.setText("Resultado :" + division);
 
             }
         });
