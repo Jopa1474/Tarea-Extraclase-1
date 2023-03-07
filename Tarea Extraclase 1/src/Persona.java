@@ -34,5 +34,9 @@ public class Persona {
     public int getEdad() {
         return edad;
     }
+    //https://www.youtube.com/watch?v=xoVoRT4MyU4
+    public String toString(){
+        return this.nombre;
+    }
 
 }
