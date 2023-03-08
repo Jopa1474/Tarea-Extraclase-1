@@ -47,6 +47,9 @@ public class PersonaGUI extends JFrame{
         boxProvincia.addItem("Puntarenas");
         boxProvincia.addItem("Limon");
 
+        //Transformado en array a peticion del ide, y funciono
+        final int[] Size = {0};
+
 
         /**
          * Boton para agregar personas
@@ -59,20 +62,33 @@ public class PersonaGUI extends JFrame{
                 int Edad = 0;
                 Edad = Integer.parseInt(txtEdad.getText());
 
-                Persona nombre = new Persona(txtNombre.getText(), Provincia, Edad);
+                if (Size[0] != 4){
+                    if (Edad > 0){
+                        Persona nombre = new Persona(txtNombre.getText(), Provincia, Edad);
 
+                        boxPersona1.addItem(nombre);
 
-                boxPersona1.addItem(nombre);
+                        boxPersona2.addItem(nombre);
 
-                boxPersona2.addItem(nombre);
+                        System.out.println(nombre.getNombre());
+                        System.out.println(nombre.getEdad());
+                        System.out.println(nombre.getProvincia());
 
-                System.out.println(nombre.getNombre());
-                System.out.println(nombre.getEdad());
-                System.out.println(nombre.getProvincia());
+                        txtNombre.setText("");
+                        txtEdad.setText("");
 
-                txtNombre.setText("");
-                txtEdad.setText("");
+                        lblResultado.setText("Resultado:");
 
+                        Size[0] += 1;
+                        System.out.println("Size: "+ Size[0]);
+                    }
+                    else {
+                        lblResultado.setText("La edad debe ser mayor a 0");
+                    }
+                }
+                else {
+                    System.out.println("Numero maximo de personas alcanzado");
+                }
 
             }
         });
