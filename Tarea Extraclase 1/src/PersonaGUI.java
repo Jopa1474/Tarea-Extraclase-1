@@ -2,7 +2,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase para la interfaz
+ */
+
 public class PersonaGUI extends JFrame{
+
     private JPanel panel1;
     private JLabel lblResultado;
     private JTextField txtNombre;
@@ -16,14 +21,24 @@ public class PersonaGUI extends JFrame{
     private JButton btnDivision;
     private JButton btnResta;
 
-
+    /**
+     * Metodo constructor para la interfaz
+     */
     public PersonaGUI() {
+
+        /**
+         * Atributos de la interfaz
+         */
         setContentPane(panel1);
         setTitle("Personas");
         setSize(650, 500);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        /**
+         * Para anadir las provincias al combobox
+         * @author https://www.youtube.com/watch?v=xoVoRT4MyU4
+         */
         boxProvincia.addItem("San Jose");
         boxProvincia.addItem("Alajuela");
         boxProvincia.addItem("Cartago");
@@ -33,6 +48,9 @@ public class PersonaGUI extends JFrame{
         boxProvincia.addItem("Limon");
 
 
+        /**
+         * Boton para agregar personas
+         */
         btnPersona.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,7 +59,7 @@ public class PersonaGUI extends JFrame{
                 int Edad = 0;
                 Edad = Integer.parseInt(txtEdad.getText());
 
-                Persona nombre = new Persona(txtNombre.getText(),Provincia,Edad);
+                Persona nombre = new Persona(txtNombre.getText(), Provincia, Edad);
 
 
                 boxPersona1.addItem(nombre);
@@ -59,6 +77,9 @@ public class PersonaGUI extends JFrame{
             }
         });
 
+        /**
+         * Boton para sumar las edades de las personas seleccionadas
+         */
         btnSuma.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +96,9 @@ public class PersonaGUI extends JFrame{
             }
         });
 
+        /**
+         * Boton para restar las edades de las personas seleccionadas
+         */
         btnResta.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -93,6 +117,9 @@ public class PersonaGUI extends JFrame{
             }
         });
 
+        /**
+         * Boton para multiplicar las edades de las persons seleccionadas
+         */
         btnMulti.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -111,6 +138,9 @@ public class PersonaGUI extends JFrame{
             }
         });
 
+        /**
+         * Boton para dividir las edades de las personas seleccionadas
+         */
         btnDivision.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
